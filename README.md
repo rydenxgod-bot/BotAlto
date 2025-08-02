@@ -91,7 +91,7 @@ ctx.replyWithDice();
 
 ### 6. Weather (mock)
 ```javascript
-const city = ctx.message.text.split(' ')[1] || 'Delhi';
+const city = ctx.message.text.split(' ')[1] || 'Gujarat';
 ctx.reply(`🌤️ ${city}: Sunny, 28°C`);
 ```
 
