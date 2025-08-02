@@ -19,6 +19,7 @@ BotAlto is an open-source platform for hosting and managing Telegram bots with a
 1. Clone the repository:
    ```bash
    git clone https://github.com/ProKaiiddo/BotAlto
+   cd BotAlto
    ```
 
 2. Install dependencies:
