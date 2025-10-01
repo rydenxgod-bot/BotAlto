@@ -164,7 +164,7 @@ app.use((req, res, next) => {
 
 // Default route serve dashboard
 app.get("/", (req, res) => {
-  res.sendFile(path.join(__dirname, '../Frontend/index.html'));
+  res.sendFile(path.join(__dirname, '../Fronted/index.html'));
 });
 
 // ---------- 24/7 ----------
