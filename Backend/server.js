@@ -148,9 +148,23 @@ router.get('/getCommands', (req, res) => {
 
 app.use("/api", router);
 
-// ---------- HEALTH CHECK ----------
+// ---------- Serve Frontend ----------
+app.use(express.static(path.join(__dirname, '../Frontend')));
+
+// Proxy old frontend calls → API
+app.use((req, res, next) => {
+  if (req.path.startsWith('/getBots')) req.url = '/api/getBots';
+  if (req.path.startsWith('/createBot')) req.url = '/api/createBot';
+  if (req.path.startsWith('/deleteBot')) req.url = '/api/deleteBot';
+  if (req.path.startsWith('/getCommands')) req.url = '/api/getCommands';
+  if (req.path.startsWith('/addCommand')) req.url = '/api/addCommand';
+  if (req.path.startsWith('/delCommand')) req.url = '/api/delCommand';
+  next();
+});
+
+// Default route serve dashboard
 app.get("/", (req, res) => {
-  res.send("🚀 BotAlto backend is alive");
+  res.sendFile(path.join(__dirname, '../Frontend/index.html'));
 });
 
 // ---------- 24/7 ----------
@@ -158,4 +172,4 @@ process.on('uncaughtException', console.error);
 process.on('unhandledRejection', console.error);
 
 const PORT = process.env.PORT || 3000;
-app.listen(PORT, () => console.log(`⚡ BotAlto server on :${PORT}`));
+app.listen(PORT, () => console.log(`⚡Ryden BotAlto server on :${PORT}`));
