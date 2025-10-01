@@ -149,7 +149,7 @@ router.get('/getCommands', (req, res) => {
 app.use("/api", router);
 
 // ---------- Serve Frontend ----------
-app.use(express.static(path.join(__dirname, '../Frontend')));
+app.use(express.static(path.join(__dirname, '../Fronted')));
 
 // Proxy old frontend calls → API
 app.use((req, res, next) => {
